@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St Kevin's College — Father/Son Camp 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #f0b429;
+    --green: #4a7c59;
+    --light: #f5f5f0;
+    --white: #ffffff;
+    --text: #222;
+    --border: #ddd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #e8e8e4;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Page Shell ── */
+  .page {
+    max-width: 820px;
+    margin: 30px auto;
+    background: var(--white);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.18);
+    page-break-after: always;
+  }
+
+  /* ── Page Header ── */
+  .page-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 28px 10px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .page-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .page-header .sub {
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .page-body { padding: 28px; }
+
+  /* ── Cover / Program Page ── */
+  .cover-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: var(--navy);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .cover-sub {
+    font-size: 15px;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .cover-meta {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 22px;
+  }
+
+  /* ── Day Header ── */
+  .day-header {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 16px;
+    margin: 18px 0 0 0;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .day-header::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--gold);
+  }
+
+  /* ── Schedule Table ── */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin-bottom: 6px;
+  }
+  .schedule-table thead tr {
+    background: var(--green);
+    color: var(--white);
+  }
+  .schedule-table thead th {
+    padding: 6px 5px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .schedule-table thead th:first-child { text-align: left; }
+  .schedule-table tbody tr:nth-child(even) { background: #f0f4f0; }
+  .schedule-table tbody tr:hover { background: #e0ece3; }
+  .schedule-table td {
+    padding: 5px 5px;
+    border: 1px solid #d0d8d0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .schedule-table td:first-child {
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--navy);
+    background: #eef1f7;
+    padding-left: 8px;
+    font-size: 12px;
+  }
+  .schedule-table td.activity {
+    font-size: 10.5px;
+    color: #333;
+    line-height: 1.3;
+  }
+
+  /* Full-width event rows */
+  .schedule-table tr.event-row td {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-align: center;
+  }
+  .schedule-table tr.event-row td:first-child {
+    background: var(--navy);
+    color: var(--gold);
+  }
+
+  /* ── Groups Page ── */
+  .groups-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .group-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .group-card-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 7px 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .group-card-header .yr-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+  .group-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .group-table thead tr {
+    background: var(--green);
+    color: var(--white);
+  }
+  .group-table thead th {
+    padding: 4px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .group-table tbody tr:nth-child(even) { background: #f5f5f0; }
+  .group-table td {
+    padding: 3px 8px;
+    border-bottom: 1px solid #ececec;
+  }
+  .group-table td:last-child { text-align: center; color: #777; }
+
+  /* ── Menu Page ── */
+  .menu-day {
+    margin-bottom: 28px;
+  }
+  .menu-day-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .menu-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .menu-item {
+    border-left: 4px solid var(--green);
+    padding: 6px 10px;
+    background: #f7f9f7;
+  }
+  .menu-item h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .menu-item .time {
+    font-size: 10px;
+    color: var(--green);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .menu-item p {
+    font-size: 12px;
+    color: #444;
+    font-style: italic;
+  }
+
+  /* ── Thank You Page ── */
+  .thankyou-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .thankyou-left h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .thankyou-left h2 span { color: var(--gold); }
+  .thankyou-left h3 {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .thankyou-left p {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .thankyou-left ul {
+    padding-left: 18px;
+    margin: 8px 0 14px;
+  }
+  .thankyou-left ul li {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .thankyou-left a { color: var(--green); font-weight: 600; }
+
+  .thankyou-right {
+    background: var(--navy);
+    color: var(--white);
+    padding: 22px 18px;
+    text-align: center;
+  }
+  .big-slogan {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .big-slogan .cross {
+    color: var(--gold);
+    font-size: 36px;
+    display: block;
+    margin: 6px 0;
+  }
+  .big-slogan .line2 { color: var(--gold); }
+  .tagline-box {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 12px;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .tagline-box .bold { font-weight: 700; font-size: 12px; }
+
+  /* ── Map / Accommodation pages ── */
+  .map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  /* ── Dividers ── */
+  .divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--green) 50%, var(--navy) 100%);
+    margin: 0;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1 — PROGRAM
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026 &nbsp;|&nbsp; Phillip Island Adventure Resort (PAIR) &nbsp;|&nbsp; 1775–1801 Phillip Island Rd, Cowes VIC 3922</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+    <div class="cover-title">Program for the Weekend</div>
+
+    <!-- DAY 1 -->
+    <div class="day-header">DAY 1 — Saturday 21st March</div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Grp 1</th><th>Grp 2</th><th>Grp 3</th>
+          <th>Grp 4</th><th>Grp 5</th><th>Grp 6</th>
+          <th>Grp 7</th><th>Grp 8</th><th>Grp 9</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="event-row"><td>7:45 am</td><td colspan="9">Attendees Arrive</td></tr>
+        <tr class="event-row"><td>8:00 am</td><td colspan="9">Move into Allocated Rooms</td></tr>
+        <tr class="event-row"><td>8:45 am</td><td colspan="9">Welcome Address</td></tr>
+        <tr>
+          <td>9:00 am</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+        </tr>
+        <tr class="event-row"><td>10:15 am</td><td colspan="9">Morning Tea</td></tr>
+        <tr>
+          <td>10:45 am</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+        </tr>
+        <tr>
+          <td>11:45 am</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+        </tr>
+        <tr class="event-row"><td>1:00 pm</td><td colspan="9">Lunch</td></tr>
+        <tr>
+          <td>2:00 pm</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+        </tr>
+        <tr>
+          <td>3:15 pm</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+        </tr>
+        <tr class="event-row"><td>4:30 pm</td><td colspan="9">Afternoon Tea</td></tr>
+        <tr>
+          <td>4:45 pm</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+        </tr>
+        <tr class="event-row"><td>6:00 pm</td><td colspan="9">Dinner</td></tr>
+        <tr class="event-row"><td>7:30 pm</td><td colspan="9">Camp Fire – Reflection</td></tr>
+        <tr class="event-row"><td>8:00 pm</td><td colspan="9">Movie / Evening Snack</td></tr>
+        <tr class="event-row"><td>10:30 pm</td><td colspan="9">Pack Up</td></tr>
+        <tr class="event-row"><td>11:00 pm</td><td colspan="9">Lights Out</td></tr>
+      </tbody>
+    </table>
+
+    <!-- DAY 2 -->
+    <div class="day-header">DAY 2 — Sunday 22nd March</div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Grp 1</th><th>Grp 2</th><th>Grp 3</th>
+          <th>Grp 4</th><th>Grp 5</th><th>Grp 6</th>
+          <th>Grp 7</th><th>Grp 8</th><th>Grp 9</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="event-row"><td>8:00 am</td><td colspan="9">Breakfast</td></tr>
+        <tr>
+          <td>9:00 am</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+        </tr>
+        <tr>
+          <td>10:15 am</td>
+          <td class="activity">Single Flying Fox</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+        </tr>
+        <tr>
+          <td>11:30 am</td>
+          <td class="activity">Team Rescue</td>
+          <td class="activity">Climbing Wall</td>
+          <td class="activity">Circotron Sphere</td>
+          <td class="activity">Canoeing</td>
+          <td class="activity">Pool</td>
+          <td class="activity">Archery</td>
+          <td class="activity">Giant Swing</td>
+          <td class="activity">Initiatives Course</td>
+          <td class="activity">Single Flying Fox</td>
+        </tr>
+        <tr class="event-row"><td>12:45 pm</td><td colspan="9">Pack and Move from Rooms</td></tr>
+        <tr class="event-row"><td>1:00 pm</td><td colspan="9">Lunch</td></tr>
+        <tr class="event-row"><td>1:45 pm</td><td colspan="9">Home Time</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 2+3 — ACTIVITY GROUP NUMBERS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Activity Group Numbers</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+
+    <div class="groups-grid">
+
+      <!-- Group 1 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 1 <span class="yr-badge">Year 2</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Andrew</td><td>Boland</td><td>2</td><td>38</td></tr>
+            <tr><td>Elliot</td><td>Boland</td><td>2</td><td>38</td></tr>
+            <tr><td>Henry</td><td>Brennan</td><td>2</td><td>41</td></tr>
+            <tr><td>Tyson</td><td>Brennan</td><td>2</td><td>41</td></tr>
+            <tr><td>Cassius H… </td><td>Chen</td><td>2</td><td>34</td></tr>
+            <tr><td>Charlie</td><td>Chen</td><td>2</td><td>34</td></tr>
+            <tr><td>Hugo</td><td>Collins</td><td>2</td><td>59</td></tr>
+            <tr><td>Jeremy</td><td>Collins</td><td>2</td><td>59</td></tr>
+            <tr><td>Dawei</td><td>Ding</td><td>4</td><td>57</td></tr>
+            <tr><td>Eden</td><td>Ding</td><td>4</td><td>57</td></tr>
+            <tr><td>Noah</td><td>Ding</td><td>2</td><td>57</td></tr>
+            <tr><td>Isaac</td><td>James</td><td>2</td><td>39</td></tr>
+            <tr><td>Paul</td><td>James</td><td>2</td><td>39</td></tr>
+            <tr><td>Liam</td><td>Jiao</td><td>2</td><td>38</td></tr>
+            <tr><td>Simon</td><td>Jiao</td><td>2</td><td>38</td></tr>
+            <tr><td>Alexis</td><td>Kouts</td><td>2</td><td>37</td></tr>
+            <tr><td>Nicholas</td><td>Kouts</td><td>2</td><td>37</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 2 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 2 <span class="yr-badge">Year 2</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Ryan</td><td>Law</td><td>2</td><td>36</td></tr>
+            <tr><td>Louie</td><td>Li</td><td>2</td><td>32</td></tr>
+            <tr><td>Chuen Chi…</td><td>Li</td><td>2</td><td>32</td></tr>
+            <tr><td>Ethan</td><td>Ma</td><td>2</td><td>34</td></tr>
+            <tr><td>Mark</td><td>Ma</td><td>2</td><td>34</td></tr>
+            <tr><td>Tim</td><td>Michael</td><td>2</td><td>39</td></tr>
+            <tr><td>Lucas</td><td>Michael-F…</td><td>2</td><td>39</td></tr>
+            <tr><td>Pieter</td><td>Peach</td><td>2</td><td>37</td></tr>
+            <tr><td>Xavier</td><td>Peach</td><td>2</td><td>37</td></tr>
+            <tr><td>Aiden</td><td>Rajaee</td><td>2</td><td>54</td></tr>
+            <tr><td>Nick</td><td>Rajaee</td><td>3</td><td>54</td></tr>
+            <tr><td>Omid</td><td>Rajaee</td><td>3</td><td>54</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 3 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 3 <span class="yr-badge">Year 2</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Justin</td><td>Roberts</td><td>2</td><td>41</td></tr>
+            <tr><td>Kiaan</td><td>Roberts</td><td>2</td><td>41</td></tr>
+            <tr><td>Atticus</td><td>Sleigh</td><td>2</td><td>36</td></tr>
+            <tr><td>Nick</td><td>Sleigh</td><td>2</td><td>36</td></tr>
+            <tr><td>Brian</td><td>Tran</td><td>2</td><td>36</td></tr>
+            <tr><td>Juan</td><td>Trujillo</td><td>2</td><td>32</td></tr>
+            <tr><td>Diego</td><td>Trujillo…</td><td>2</td><td>32</td></tr>
+            <tr><td>Max</td><td>Vun</td><td>2</td><td>53</td></tr>
+            <tr><td>Simon</td><td>Vun</td><td>2</td><td>53</td></tr>
+            <tr><td>Wenbo</td><td>Wu</td><td>2</td><td>53</td></tr>
+            <tr><td>Zion</td><td>Wu</td><td>2</td><td>53</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 4 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 4 <span class="yr-badge">Year 3</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Jonathan</td><td>Angelopoulos</td><td>3</td><td>48</td></tr>
+            <tr><td>Penleigh</td><td>Angelopoulos</td><td>3</td><td>48</td></tr>
+            <tr><td>David</td><td>Barrese</td><td>3</td><td>50</td></tr>
+            <tr><td>Rafaele</td><td>Barrese</td><td>3</td><td>50</td></tr>
+            <tr><td>Raphy</td><td>Bell</td><td>3</td><td>65</td></tr>
+            <tr><td>Will</td><td>Bell</td><td>3</td><td>65</td></tr>
+            <tr><td>David</td><td>Brewster</td><td>3</td><td>Suite 4</td></tr>
+            <tr><td>Thomas</td><td>Brewster</td><td>3</td><td>Suite 4</td></tr>
+            <tr><td>Francesco</td><td>Cannatelli</td><td>3</td><td>52</td></tr>
+            <tr><td>Joseph</td><td>Cannatelli</td><td>3</td><td>52</td></tr>
+            <tr><td>Brian</td><td>Choy</td><td>3</td><td>60</td></tr>
+            <tr><td>Cedric</td><td>Choy</td><td>3</td><td>60</td></tr>
+            <tr><td>Alexander</td><td>Cutugno</td><td>3</td><td>44</td></tr>
+            <tr><td>Daniel</td><td>Cutugno</td><td>3</td><td>44</td></tr>
+            <tr><td>Freddie</td><td>Dempsey</td><td>3</td><td>40</td></tr>
+            <tr><td>Josh</td><td>Dempsey</td><td>3</td><td>40</td></tr>
+            <tr><td>Patrick</td><td>Dowling</td><td>3</td><td>29</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 5 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 5 <span class="yr-badge">Year 3</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Francis</td><td>Gu</td><td>3</td><td>52</td></tr>
+            <tr><td>Finn</td><td>Hedley</td><td>3</td><td>40</td></tr>
+            <tr><td>Jayden</td><td>Ho</td><td>3</td><td>48</td></tr>
+            <tr><td>Marcus</td><td>Ho</td><td>3</td><td>48</td></tr>
+            <tr><td>Kimi</td><td>Huo</td><td>3</td><td>55</td></tr>
+            <tr><td>Michael</td><td>Huo</td><td>4</td><td>55</td></tr>
+            <tr><td>Neo</td><td>Huo</td><td>4</td><td>55</td></tr>
+            <tr><td>James</td><td>Nicolson</td><td>3</td><td>44</td></tr>
+            <tr><td>Jude</td><td>Nicolson</td><td>3</td><td>44</td></tr>
+            <tr><td>Diamandis</td><td>Pittas</td><td>3</td><td>50</td></tr>
+            <tr><td>Georgios</td><td>Pittas</td><td>3</td><td>50</td></tr>
+            <tr><td>Hunter</td><td>Qiu</td><td>3</td><td>52</td></tr>
+            <tr><td>Greg</td><td>Reynard</td><td>3</td><td>43</td></tr>
+            <tr><td>Teddy</td><td>Reynard</td><td>3</td><td>43</td></tr>
+            <tr><td>Anton</td><td>Roux</td><td>3</td><td>Suite 3</td></tr>
+            <tr><td>Daniel</td><td>Roux</td><td>3</td><td>Suite 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 6 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 6 <span class="yr-badge">Year 3</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>James</td><td>Tan</td><td>3</td><td>43</td></tr>
+            <tr><td>Reilly</td><td>Tan</td><td>3</td><td>43</td></tr>
+            <tr><td>Damian</td><td>Toscano</td><td>3</td><td>Suite 4</td></tr>
+            <tr><td>Rafael</td><td>Toscano</td><td>3</td><td>Suite 4</td></tr>
+            <tr><td>Edward</td><td>Townson-Dowling</td><td>3</td><td>29</td></tr>
+            <tr><td>Terry</td><td>Trewin</td><td>3</td><td>40</td></tr>
+            <tr><td>Gordon</td><td>Wang</td><td>3</td><td>42</td></tr>
+            <tr><td>James</td><td>Wang</td><td>3</td><td>42</td></tr>
+            <tr><td>Max</td><td>Wang</td><td>3</td><td>42</td></tr>
+            <tr><td>Qiang</td><td>Wang</td><td>3</td><td>42</td></tr>
+            <tr><td>Oliver</td><td>Wilson</td><td>3</td><td>29</td></tr>
+            <tr><td>Troy</td><td>Wilson</td><td>3</td><td>29</td></tr>
+            <tr><td>Luke</td><td>Caligiuri</td><td>?</td><td>61</td></tr>
+            <tr><td>Luke</td><td>Caligiuri</td><td>?</td><td>61</td></tr>
+            <tr><td>Benjamin</td><td>Fei</td><td>?</td><td>58</td></tr>
+            <tr><td>Xianchao</td><td>Fei</td><td>?</td><td>58</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 7 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 7 <span class="yr-badge">Year 4</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Curtis</td><td>Cao</td><td>4</td><td>46</td></tr>
+            <tr><td>Jeff</td><td>Cao</td><td>4</td><td>46</td></tr>
+            <tr><td>Emilio</td><td>Cleves Gutierrez</td><td>4</td><td>30</td></tr>
+            <tr><td>Victor</td><td>Cleves Roman</td><td>4</td><td>30</td></tr>
+            <tr><td>Jason</td><td>Colosimo</td><td>4</td><td>30</td></tr>
+            <tr><td>Saverio</td><td>Colosimo</td><td>4</td><td>30</td></tr>
+            <tr><td>Andres</td><td>Cortes</td><td>4</td><td>31</td></tr>
+            <tr><td>Thomas</td><td>Cortes</td><td>4</td><td>31</td></tr>
+            <tr><td>Jerry</td><td>Ding</td><td>4</td><td>51</td></tr>
+            <tr><td>Lucas</td><td>Ding</td><td>4</td><td>51</td></tr>
+            <tr><td>Frazer</td><td>East</td><td>4</td><td>46</td></tr>
+            <tr><td>Frazer (Hubert)</td><td>East</td><td>4</td><td>46</td></tr>
+            <tr><td>Joshua</td><td>Fuoco</td><td>4</td><td>49</td></tr>
+            <tr><td>Vincent</td><td>Fuoco</td><td>4</td><td>49</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 8 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 8 <span class="yr-badge">Year 4</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Nicholas</td><td>Haddad</td><td>4</td><td>27</td></tr>
+            <tr><td>Tobias</td><td>Haddad</td><td>4</td><td>27</td></tr>
+            <tr><td>Andrew</td><td>Hely</td><td>4</td><td>Suite 3</td></tr>
+            <tr><td>George</td><td>Hely</td><td>4</td><td>Suite 3</td></tr>
+            <tr><td>Elie</td><td>Khoury</td><td>4</td><td>33</td></tr>
+            <tr><td>Jude</td><td>Khoury</td><td>4</td><td>33</td></tr>
+            <tr><td>David</td><td>Kong</td><td>4</td><td>35</td></tr>
+            <tr><td>James</td><td>Kong</td><td>4</td><td>35</td></tr>
+            <tr><td>George</td><td>Koufogiannis</td><td>4</td><td>28</td></tr>
+            <tr><td>Yianni</td><td>Koufogiannis</td><td>4</td><td>28</td></tr>
+            <tr><td>Emmanuel</td><td>Makari</td><td>4</td><td>35</td></tr>
+            <tr><td>John</td><td>Makari</td><td>4</td><td>35</td></tr>
+            <tr><td>Hendrix</td><td>Matenga</td><td>4</td><td>45</td></tr>
+            <tr><td>Lee</td><td>Matenga</td><td>4</td><td>45</td></tr>
+            <tr><td>Adam</td><td>Qu</td><td>4</td><td>27</td></tr>
+            <tr><td>Rong</td><td>Qu</td><td>4</td><td>27</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Group 9 -->
+      <div class="group-card">
+        <div class="group-card-header">Group 9 <span class="yr-badge">Year 4</span></div>
+        <table class="group-table">
+          <thead><tr><th>First Name</th><th>Surname</th><th>Yr</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td>Aiden</td><td>Roohi</td><td>4</td><td>47</td></tr>
+            <tr><td>Reza</td><td>Roohi</td><td>4</td><td>47</td></tr>
+            <tr><td>Adrian</td><td>Sommerville</td><td>4</td><td>49</td></tr>
+            <tr><td>Heath</td><td>Sommerville</td><td>4</td><td>49</td></tr>
+            <tr><td>Joseph</td><td>Taylor</td><td>4</td><td>33</td></tr>
+            <tr><td>Samuel</td><td>Taylor</td><td>4</td><td>33</td></tr>
+            <tr><td>Aary</td><td>Taylor</td><td>4</td><td>51</td></tr>
+            <tr><td>Mayur</td><td>Taylor</td><td>4</td><td>51</td></tr>
+            <tr><td>Ethan</td><td>Wilson</td><td>4</td><td>31</td></tr>
+            <tr><td>Scott</td><td>Wilson</td><td>4</td><td>31</td></tr>
+            <tr><td>George</td><td>Yang</td><td>4</td><td>28</td></tr>
+            <tr><td>Yong</td><td>Yang</td><td>4</td><td>28</td></tr>
+            <tr><td>Allen</td><td>Zong</td><td>4</td><td>47</td></tr>
+            <tr><td>Kevin</td><td>Zong</td><td>4</td><td>47</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /groups-grid -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 4 — RESORT MAP
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Resort Map</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body" style="text-align:center;">
+    <p style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">Resort Map</p>
+    <p style="font-size:13px;color:#666;margin-bottom:16px;">Phillip Island Adventure Resort (PAIR) &nbsp;–&nbsp; 1775–1801 Phillip Island Rd, Cowes VIC 3922</p>
+    <!-- Embed the map image from the uploaded PDF page -->
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNzAwIDUwMCI+PHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiNlOGYwZTkiIHJ4PSI4Ii8+PHRleHQgeD0iMzUwIiB5PSIyMzAiIGZvbnQtZmFtaWx5PSJPc3dhbGQsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzFhMjc0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjYwMCI+UGhpbGxpcCBJc2xhbmQgQWR2ZW50dXJlIFJlc29ydCAtIFJlc29ydCBNYXA8L3RleHQ+PHRleHQgeD0iMzUwIiB5PSIyNjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNGE3YzU5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4oU2VlIFBERiBmb3IgZnVsbCBkZXRhaWxlZCBtYXApPC90ZXh0Pjwvc3ZnPg==" 
+         alt="Resort Map placeholder" style="width:100%;max-width:680px;border:1px solid #ccc;border-radius:4px;">
+    <div style="margin-top:18px;background:#f0f4f0;border:1px solid #c8d8c8;border-radius:4px;padding:14px;text-align:left;display:inline-block;min-width:300px;">
+      <p style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">KEY ACTIVITY LOCATIONS</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;font-size:12px;color:#333;">
+        <span>🧗 Climbing Wall</span><span>🏹 Archery</span>
+        <span>🚣 Canoeing</span><span>🌀 Circotron Sphere</span>
+        <span>🌊 Pool</span><span>🎯 Giant Swing</span>
+        <span>🦅 Single Flying Fox</span><span>🤝 Team Rescue</span>
+        <span>🗺️ Initiatives Course</span>
+      </div>
+    </div>
+    <p style="font-size:11px;color:#888;margin-top:12px;">For the full detailed resort map, please refer to the original printed booklet.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 5 — ACCOMMODATION LAYOUT
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Accommodation Layout</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+    <p style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;text-align:center;">Accommodation Layout</p>
+
+    <!-- Wing summary cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div style="background:var(--navy);color:white;padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:8px;">SMITHS</div>
+        <div style="font-size:12px;opacity:0.85;">Rooms 45 – 72</div>
+        <div style="font-size:11px;margin-top:6px;opacity:0.7;">Incl. Suite 4</div>
+      </div>
+      <div style="background:var(--green);color:white;padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:8px;">WOOLAMAI</div>
+        <div style="font-size:12px;opacity:0.85;">Rooms 27 – 44</div>
+        <div style="font-size:11px;margin-top:6px;opacity:0.7;">Incl. Suite 3</div>
+      </div>
+      <div style="background:#3a5c7a;color:white;padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:8px;">SILVERLEAVES</div>
+        <div style="font-size:12px;opacity:0.85;">Rooms 1 – 26</div>
+        <div style="font-size:11px;margin-top:6px;opacity:0.7;">Incl. Suite 1 &amp; Suite 2</div>
+      </div>
+    </div>
+
+    <!-- Room allocation quick reference -->
+    <p style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">Room Allocation Quick Reference</p>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:var(--navy);color:white;">
+          <th style="padding:6px 10px;text-align:left;">Room</th>
+          <th style="padding:6px 10px;text-align:left;">Occupants</th>
+          <th style="padding:6px 10px;text-align:left;">Wing</th>
+          <th style="padding:6px 10px;text-align:left;">Room</th>
+          <th style="padding:6px 10px;text-align:left;">Occupants</th>
+          <th style="padding:6px 10px;text-align:left;">Wing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">27</td><td>Haddad, Qu</td><td>Woolamai</td><td style="padding:4px 10px;">47</td><td>Roohi, Zong</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">28</td><td>Koufogiannis, Yang</td><td>Woolamai</td><td style="padding:4px 10px;">48</td><td>Angelopoulos, Ho</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">29</td><td>Dowling, Townson-Dowling, Wilson</td><td>Woolamai</td><td style="padding:4px 10px;">49</td><td>Fuoco, Sommerville</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">30</td><td>Cleves, Colosimo</td><td>Woolamai</td><td style="padding:4px 10px;">50</td><td>Barrese, Pittas</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">31</td><td>Cortes, Wilson</td><td>Woolamai</td><td style="padding:4px 10px;">51</td><td>Ding (J/L), Taylor (A/M)</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">32</td><td>Li (L/C), Trujillo</td><td>Woolamai</td><td style="padding:4px 10px;">52</td><td>Cannatelli, Gu, Qiu</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">33</td><td>Khoury, Taylor (J/S)</td><td>Woolamai</td><td style="padding:4px 10px;">53</td><td>Vun, Wu</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">34</td><td>Chen, Ma</td><td>Woolamai</td><td style="padding:4px 10px;">54</td><td>Rajaee</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">35</td><td>Kong, Makari</td><td>Woolamai</td><td style="padding:4px 10px;">55</td><td>Huo</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">36</td><td>Law, Sleigh, Tran</td><td>Woolamai</td><td style="padding:4px 10px;">57</td><td>Ding (D/E/N)</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">37</td><td>Kouts, Peach</td><td>Woolamai</td><td style="padding:4px 10px;">58</td><td>Fei</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">38</td><td>Boland, Jiao</td><td>Woolamai</td><td style="padding:4px 10px;">59</td><td>Collins</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">39</td><td>James, Michael</td><td>Woolamai</td><td style="padding:4px 10px;">60</td><td>Choy</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">40</td><td>Dempsey, Hedley, Trewin</td><td>Woolamai</td><td style="padding:4px 10px;">61</td><td>Caligiuri</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">41</td><td>Brennan, Roberts</td><td>Woolamai</td><td style="padding:4px 10px;">65</td><td>Bell</td><td>Smiths</td></tr>
+        <tr><td style="padding:4px 10px;">42</td><td>Wang</td><td>Woolamai</td><td style="padding:4px 10px;">Suite 3</td><td>Hely, Roux</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">43</td><td>Reynard, Tan</td><td>Woolamai</td><td style="padding:4px 10px;">Suite 4</td><td>Brewster, Toscano</td><td>Woolamai</td></tr>
+        <tr><td style="padding:4px 10px;">44</td><td>Cutugno, Nicolson</td><td>Woolamai</td><td style="padding:4px 10px;">46</td><td>Cao, East</td><td>Smiths</td></tr>
+        <tr style="background:#f5f5f0;"><td style="padding:4px 10px;">45</td><td>Matenga</td><td>Smiths</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:#888;margin-top:12px;text-align:center;">For the full accommodation layout map, please refer to the original printed booklet.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 6 — MENU
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Menu</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+
+    <div class="menu-day">
+      <div class="menu-day-label">Saturday 21st March</div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="time">10:30 am</div>
+          <h4>Morning Tea</h4>
+          <p>Muffins Banana Choc Chip</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">12:30 pm (1:00 pm)</div>
+          <h4>Lunch</h4>
+          <p>Chicken Wraps with Assorted Salad Fillings &amp; Fruit Platter</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">3:30 pm (4:30 pm)</div>
+          <h4>Afternoon Tea</h4>
+          <p>Anzac Slice — a soft and chewy homemade slice with that classic Anzac taste</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">6:00 pm</div>
+          <h4>Dinner</h4>
+          <p>Roast Beef with Chats &amp; Seasonal Vegetables</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">6:30 pm</div>
+          <h4>Dessert</h4>
+          <p>Apple Crumble &amp; Whipped Cream — warm &amp; delicious with a hint of cinnamon</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">8:00 pm (8:30 pm)</div>
+          <h4>Evening Snack</h4>
+          <p>Savoury Platter — Salami, Cabana, Carrot, Celery, Cube Cheese, Avocado Dip, Homemade Hummus, Dried Fruit, Fresh Fruit and Water Crackers</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-day">
+      <div class="menu-day-label">Sunday 22nd March</div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="time">8:00 am</div>
+          <h4>Breakfast</h4>
+          <p>Toast &amp; Spreads (Butter, Nutlex, Jam, Honey, Vegemite) · Cereals: Rice Bubbles, Corn Flakes, Sultana Bran, Weet-Bix · Fruit</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">10:30 am</div>
+          <h4>Morning Tea</h4>
+          <p>Double Choc Cookie</p>
+        </div>
+        <div class="menu-item">
+          <div class="time">12:30 pm (1:00 pm)</div>
+          <h4>Lunch</h4>
+          <p>Baked Potatoes with Bacon &amp; Corn — whole jacket potatoes served with bacon pieces, corn kernels and assorted salads &amp; condiments</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 7 — THANK YOU
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Thank You</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+
+    <div class="thankyou-body">
+      <div class="thankyou-left">
+        <h2>Thank <span>You</span><br>For Attending<br><span style="font-size:20px;color:var(--green);">Phillip Island Adventure Resort (PAIR)</span></h2>
+
+        <h3>The SKCFA is a vibrant and energetic group of fathers/guardians at St Kevin's, aiming to:</h3>
+        <ul>
+          <li>Foster a sense of community amongst the parents of St Kevin's College; and</li>
+          <li>Contribute to the development of the boys' relationship with their fathers/guardians through organised activities all year round.</li>
+        </ul>
+
+        <p>The SKCFA contributes to every year level via events held for students and for every father/male mentor via e.g. dinners. We also help at school functions, again, being an active part of the college community.</p>
+
+        <p>If you too want to take part in your son's year level events, or other college functions, please reach out to us:<br>
+        <a href="mailto:fathersassociation@stkevins.vic.edu.au">fathersassociation@stkevins.vic.edu.au</a></p>
+
+        <p>Keep up to date with all our activities via the college portal and our Facebook page:<br>
+        <a href="https://www.facebook.com/groups/SKCFathersAssociation/" target="_blank">https://www.facebook.com/groups/SKCFathersAssociation/</a></p>
+      </div>
+
+      <div class="thankyou-right">
+        <div class="big-slogan">
+          FOR EVERY
+          <span class="cross">+</span>
+          <span style="font-size:42px;display:block;">FATHER</span>
+          <span class="line2" style="font-size:42px;display:block;">SON</span>
+          IN EVERY<br>YEAR LEVEL.<br>
+          <span style="font-size:15px;color:#ccc;font-weight:400;letter-spacing:0.5px;">IT'S YOUR FATHERS ASSOCIATION.</span>
+        </div>
+
+        <div class="tagline-box">
+          <p class="bold">Take part in the rewarding opportunity to be part of your son's school and schooling life.</p>
+          <p style="margin-top:8px;">The Fathers Association holds events for every son and every father in every year level. It's a connected network that contributes to the strengthening of the boys' relationship with their fathers.</p>
+          <p style="margin-top:6px;">The Association also strengthens the network between fathers/guardians. If you'd like to be part of it in any way, contact us.</p>
+          <p style="margin-top:8px;font-weight:700;">The Father's Association is YOUR Association.</p>
+          <p style="margin-top:8px;color:var(--green);font-weight:700;">fathersassociation@stkevins.vic.edu.au</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
