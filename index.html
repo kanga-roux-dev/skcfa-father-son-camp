@@ -263,6 +263,85 @@
     font-style: italic;
   }
 
+  /* ── Packing Guide Page ── */
+  .packing-intro {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 20px;
+    font-style: italic;
+    border-left: 4px solid var(--gold);
+    padding: 8px 12px;
+    background: #fffdf0;
+  }
+  .packing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .packing-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .packing-card-header {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 12px;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .packing-card-header::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .packing-card ul {
+    list-style: none;
+    padding: 10px 12px;
+    margin: 0;
+    background: #f7f9f7;
+  }
+  .packing-card ul li {
+    font-size: 12px;
+    color: #333;
+    padding: 3px 0;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .packing-card ul li:last-child { border-bottom: none; }
+  .packing-card ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .packing-card.danger .packing-card-header { background: #8b1a1a; }
+  .packing-card.danger ul { background: #fff5f5; }
+  .packing-card.danger ul li::before {
+    content: '✕';
+    color: #c0392b;
+  }
+  .packing-card.leaders .packing-card-header { background: var(--green); }
+  .packing-card.leaders ul { background: #f0f7f2; }
+  .packing-card.leaders ul li::before {
+    content: '★';
+    color: var(--gold);
+    font-size: 10px;
+  }
+
   /* ── Thank You Page ── */
   .thankyou-body {
     display: grid;
@@ -901,7 +980,101 @@
 </div>
 
 <!-- ═══════════════════════════════════════
-     PAGE 7 — THANK YOU
+     PAGE 7 — CAMP PACKING GUIDE
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Camp Packing Guide</h1>
+    <div class="sub">Year 2–4 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 21st/22nd March 2026 &nbsp;|&nbsp; Phillip Island Adventure Resort (PAIR)</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+
+    <p class="packing-intro">The following list can be used as a guide when packing for camp. Please label all personal belongings — we cannot be responsible for lost items. Your group leader may suggest additional items to pack or leave at home.</p>
+
+    <div class="packing-grid">
+
+      <div class="packing-card">
+        <div class="packing-card-header">Clothing</div>
+        <ul>
+          <li>Underwear (socks, jocks, thermals)</li>
+          <li>Comfortable clothing for activities</li>
+          <li>Long pants &amp; long sleeved shirt</li>
+          <li>Jumper</li>
+          <li>Pajamas</li>
+          <li>Swimwear (if applicable)</li>
+          <li>Rain jacket (waterproof)</li>
+          <li>Gloves, Beanie, Warm Jacket (seasonal)</li>
+        </ul>
+      </div>
+
+      <div class="packing-card">
+        <div class="packing-card-header">Required Bedding</div>
+        <ul>
+          <li>Bottom Fitted Sheet</li>
+          <li>Pillowslip (pillow provided)</li>
+          <li>Sleeping bag or Doona</li>
+        </ul>
+      </div>
+
+      <div class="packing-card">
+        <div class="packing-card-header">Footwear</div>
+        <ul>
+          <li>Comfortable closed-toed shoes for activities</li>
+          <li>Closed-toed shoes for water activities (if applicable)</li>
+        </ul>
+      </div>
+
+      <div class="packing-card">
+        <div class="packing-card-header">Toiletries</div>
+        <ul>
+          <li>Toothbrush &amp; Toothpaste</li>
+          <li>Shampoo &amp; Conditioner</li>
+          <li>Soap</li>
+          <li>Bath Towel</li>
+        </ul>
+      </div>
+
+      <div class="packing-card">
+        <div class="packing-card-header">Other Essentials</div>
+        <ul>
+          <li>Drink Bottle</li>
+          <li>Sunscreen, Sun Hat &amp; Sunglasses</li>
+          <li>Beach / Pool Towel (if applicable)</li>
+          <li>Torch &amp; Insect Repellent</li>
+          <li>Laundry / Plastic Bag for dirty / wet clothes</li>
+          <li>Regular Medication</li>
+        </ul>
+      </div>
+
+      <div class="packing-card danger">
+        <div class="packing-card-header">What NOT to Pack</div>
+        <ul>
+          <li>Nuts or foods containing nuts</li>
+          <li>Pets or Animals (unless required as mobility aid)</li>
+          <li>Cooking Appliances</li>
+          <li>Craft Supplies (without discussion)</li>
+          <li>Drugs &amp; Alcohol, Illegal Materials</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="packing-card leaders" style="grid-column:span 3;">
+      <div class="packing-card-header">Additional Items for Group Leaders</div>
+      <ul style="display:grid;grid-template-columns:1fr 1fr;padding:10px 12px;">
+        <li>First Aid Kits (groups are required to supply their own)</li>
+        <li>Rooming Allocations &amp; Duty Group lists</li>
+        <li>AV, Sport, or other Equipment needed for your Camp Program (beyond what the Resort provides)</li>
+        <li>Special Diet Info — submit all diet requests 14 days prior to camp</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 8 — THANK YOU
 ════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header">
