@@ -187,7 +187,6 @@
     letter-spacing: 0.3px;
     border: 1px solid rgba(255,255,255,0.2);
   }
-  .schedule-table thead th:first-child { text-align: left; }
   .schedule-table tbody tr:nth-child(even) { background: #f0f4f0; }
   .schedule-table tbody tr:hover { background: #e0ece3; }
   .schedule-table td {
@@ -198,11 +197,10 @@
   }
   .schedule-table td:first-child {
     font-weight: 700;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
     color: var(--navy);
     background: #eef1f7;
-    padding-left: 8px;
     font-size: 12px;
   }
   .schedule-table td.activity {
@@ -300,7 +298,35 @@
     display: flex;
     gap: 8px;
   }
-  .rule-card ul li strong { flex: 0 0 52px; color: var(--green); }
+  .rule-card ul li strong { flex: 0 0 58px; color: var(--green); }
+  .rule-card ul li.bonus strong { color: var(--gold); }
+
+  .points-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .points-grid .rule-card { margin-bottom: 0; }
+
+  .race-rules {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 18px;
+  }
+  .race-rules li {
+    font-size: 12.5px;
+    color: #333;
+    display: flex;
+    gap: 8px;
+  }
+  .race-rules li::before {
+    content: '\25B8';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
 
   /* ── Groups Page ── */
   .groups-grid {
@@ -596,10 +622,12 @@
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#program">Program</a></li>
     <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#points">Points</a></li>
     <li><a href="#groups">Groups</a></li>
-    <li><a href="#group-leaders">Group Leaders</a></li>
+    <li><a href="#group-leaders">Camp Leaders &amp; Captains</a></li>
     <li><a href="#site-map">Site Map</a></li>
     <li><a href="#accommodation">Accommodation</a></li>
+    <li><a href="#accommodation-jarosite">Jarosite</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#cheeseboard">Cheeseboard</a></li>
     <li><a href="#packing">Packing List</a></li>
@@ -643,7 +671,7 @@
           <li><span class="t">3:45 – 5:15</span><span class="what">YMCA Led Activity</span></li>
           <li class="meal"><span class="t">6:00 pm</span><span class="what">Dinner</span></li>
           <li><span class="t">7:30 pm</span><span class="what">Film for Boys</span></li>
-          <li><span class="t">7:30 pm</span><span class="what">Dad's Cheeseboard</span></li>
+          <li><span class="t">7:30 pm</span><span class="what">Dads' Cheeseboard</span></li>
         </ul>
       </div>
       <div class="itin-day">
@@ -717,7 +745,7 @@
           <td class="activity">Radio Rogaine</td>
         </tr>
         <tr class="event-row"><td>6:00 pm</td><td colspan="4">Dinner</td></tr>
-        <tr class="event-row"><td>7:30 pm</td><td colspan="4">Film for Boys / Dad's Cheeseboard</td></tr>
+        <tr class="event-row"><td>7:30 pm</td><td colspan="4">Film for Boys / Dads' Cheeseboard</td></tr>
       </tbody>
     </table>
 
@@ -764,49 +792,161 @@
           <th colspan="4">YMCA Led — Saturday</th>
           <th colspan="6">Group Led — Sunday</th>
           <th></th>
+          <th></th>
         </tr>
         <tr>
           <th>Group</th>
           <th>Archery</th><th>Giant Swing</th><th>Vertical Challenge</th><th>Radio Rogaine</th>
           <th>Hut Building</th><th>Bat Cave</th><th>Tin Can Pass</th><th>Half Pipe</th><th>Mine Field</th><th>Toxic Waste</th>
+          <th>Team Chant</th>
           <th class="total">Total</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Group 1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
-        <tr><td>Group 2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
-        <tr><td>Group 3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
-        <tr><td>Group 4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
+        <tr><td>Group 1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
+        <tr><td>Group 2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
+        <tr><td>Group 3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
+        <tr><td>Group 4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="total"></td></tr>
       </tbody>
     </table>
 
     <div style="border-top:3px solid var(--gold);padding-top:20px;">
-      <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">How Points Are Awarded</h2>
+      <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">Challenge Course — Race Rules</h2>
+      <ul class="race-rules">
+        <li>Teams are to stay together for the duration of the activity.</li>
+        <li>Teams must be at the YMCA activities at their allocated time.</li>
+        <li>If another group is completing an activity, go to another activity.</li>
+        <li>Refer to the map for activity locations (provided to groups with a clipboard on arrival Saturday morning).</li>
+        <li>Safety breaches will result in disqualification.</li>
+        <li>Checkpoints 5–10 are the group led initiatives, completed on Sunday morning.</li>
+        <li>Respect the environment — stay on defined tracks.</li>
+        <li>Team co-operation and planning is essential to the team's success.</li>
+        <li>Each group creates a team chant to be presented at the presentation.</li>
+        <li>Bonus points to the winning chants.</li>
+      </ul>
+      <p style="margin-top:18px;text-align:center;font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--green);letter-spacing:1px;text-transform:uppercase;">Play hard. Play safe. Have fun.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     02c — HOW POINTS ARE AWARDED
+════════════════════════════════════════ -->
+<div class="page" id="points">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — How Points Are Awarded</h1>
+    <div class="sub">Year 7–8 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 24th/25th October 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+
+    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">YMCA Led — Saturday</h2>
+    <div class="points-grid" style="margin-bottom:24px;">
 
       <div class="rule-card">
-        <h4>Giant Swing <span class="led">YMCA Led</span></h4>
+        <h4>CP1 — Archery <span class="led">YMCA Led · 1.5 Hours</span></h4>
+        <p>The team is to gain as many points as possible. Each team member shoots 4 arrows. Points will be deducted for not following safety guidelines.</p>
         <ul>
-          <li><strong>20 pts</strong><span>For anyone who swings with no hands on the strop</span></li>
+          <li><strong>5 pts</strong><span>White</span></li>
+          <li><strong>10 pts</strong><span>Black</span></li>
+          <li><strong>20 pts</strong><span>Blue</span></li>
+          <li><strong>50 pts</strong><span>Red</span></li>
+          <li><strong>100 pts</strong><span>Yellow</span></li>
         </ul>
       </div>
 
       <div class="rule-card">
-        <h4>Checkpoint 4 — Radio Rogaine <span class="led">YMCA Led · Max 1.5 Hours</span></h4>
-        <p>Teams will be provided with a map, radio, phonetic alphabet and question sheet. Combine the scores for each Rogaine team to put on the group's scorecard.</p>
+        <h4>CP2 — Vertical Challenge <span class="led">YMCA Led · Max 1.5 Hours</span></h4>
+        <p>Gain as many points for the team as possible. Each team member is allowed only 1 climb.</p>
+        <ul>
+          <li><strong>50 pts</strong><span>For each element completed (maximum 5 elements)</span></li>
+          <li class="bonus"><strong>+30 pts</strong><span>Bonus if you can complete the 5 elements wearing a blindfold</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP3 — Giant Swing <span class="led">YMCA Led · Max 1.5 Hours</span></h4>
+        <p>Bonus points are awarded at the discretion of the instructor.</p>
+        <ul>
+          <li><strong>20 pts</strong><span>For anyone who reaches the top</span></li>
+          <li><strong>15 pts</strong><span>For anyone who reaches ¾ of the way to the top</span></li>
+          <li><strong>10 pts</strong><span>For anyone who reaches ½ way to the top</span></li>
+          <li class="bonus"><strong>+10 pts</strong><span>Bonus — best dance moves</span></li>
+          <li class="bonus"><strong>+10 pts</strong><span>Bonus — best scream</span></li>
+          <li class="bonus"><strong>+20 pts</strong><span>Bonus — swinging with no hands on the strop</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP4 — Radio Rogaine <span class="led">YMCA Led · Max 1.5 Hours</span></h4>
+        <p>Teams are provided with a map, radio, phonetic alphabet and question sheet. Combine the scores for each Rogaine team to put on the group's scorecard.</p>
         <ul>
           <li><strong>10 pts</strong><span>For every marker found and radioed in correctly using the phonetic alphabet</span></li>
           <li><strong>10 pts</strong><span>For every question answered correctly</span></li>
           <li><strong>5 pts</strong><span>For radioing in a marker without the correct radio procedure or phonetic alphabet</span></li>
         </ul>
       </div>
+    </div>
+
+    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">Group Led — Sunday</h2>
+    <div class="points-grid">
 
       <div class="rule-card">
-        <h4>Checkpoint 5 — Hut Building <span class="led">Group Led · 1 Hour</span></h4>
+        <h4>CP5 — Hut Building <span class="led">Group Led · 1 Hour</span></h4>
         <p>In nature, the group works as a team to build a hut. Huts need to be built on the trees on the high side of the area — not near the mountain bike trail at the bottom of camp.</p>
         <ul>
           <li><strong>10 pts</strong><span>If you can create a hut</span></li>
           <li><strong>20 pts</strong><span>If the whole group can all sit in the hut</span></li>
           <li><strong>50 pts</strong><span>If your hut is waterproof and the group doesn't get wet</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP6 — Bat Cave <span class="led">Group Led · 30 Mins Only</span></h4>
+        <p>The chessboard is a treacherous cave with only one safe pathway to the beach on the other side. Team members take turns stepping on squares — if a square is unsafe, the YMCA leader shakes their head “no” and that person returns to the start for a new person to attempt. Continue until you reach the end safely or run out of time.</p>
+        <ul>
+          <li><strong>100 pts</strong><span>If made halfway through the court</span></li>
+          <li><strong>150 pts</strong><span>If some people make it to the end</span></li>
+          <li><strong>200 pts</strong><span>If everyone in the group makes it to the end</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP7 — Tin Can Pass <span class="led">Group Led · 15 Mins Only</span></h4>
+        <p>Form a circle, spaced so you can just touch hands with the person next to you. Pass the tin can around everyone without it touching the ground. You can't move from your position and can only use the lower half of your body.</p>
+        <ul>
+          <li><strong>5 pts</strong><span>Per person passed to without dropping</span></li>
+          <li><strong>−10 pts</strong><span>Every time the tin hits the ground</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP8 — Half Pipe <span class="led">Group Led · 30 Mins Only</span></h4>
+        <p>Get the golf ball from the end of the court into the metal tin using only the half pipe sections — no hands. Once dropped in, the ball must keep moving FORWARDS — it can't go backwards or stop — and you can't move your feet while the ball is in your section.</p>
+        <ul>
+          <li><strong>200 pts</strong><span>Full court made into the tin</span></li>
+          <li><strong>100 pts</strong><span>Half court</span></li>
+          <li><strong>50 pts</strong><span>Good teamwork</span></li>
+          <li class="bonus"><strong>250 pts</strong><span>Top score</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP9 — Mine Field <span class="led">Group Led · 30 Mins Only</span></h4>
+        <p>Work in pairs. One person is blindfolded and must cross the mine field without touching any obstacles, guided by their partner's directions. Touching an obstacle means returning to the start.</p>
+        <ul>
+          <li><strong>20 pts</strong><span>Per person who gets across without stepping on an obstacle or going outside the boundaries</span></li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h4>CP10 — Toxic Waste <span class="led">Group Led · 30 Mins Only</span></h4>
+        <p>Transfer the toxic waste into the biohazard container using only the ropes and bike tyre provided — you'll need all the materials. No-one is allowed inside the outer rope, the buckets can't leave the inner rope, and no materials may be thrown or dropped inside the ring.</p>
+        <ul>
+          <li><strong>100 pts</strong><span>Completed in under 10 minutes</span></li>
+          <li><strong>50 pts</strong><span>Completed in under 20 minutes</span></li>
+          <li><strong>20 pts</strong><span>Completed in under 30 minutes</span></li>
         </ul>
       </div>
     </div>
@@ -948,19 +1088,40 @@
 </div>
 
 <!-- ═══════════════════════════════════════
-     03b — GROUP LEADERS
+     03b — CAMP LEADERS & GROUP CAPTAINS
 ════════════════════════════════════════ -->
 <div class="page" id="group-leaders">
   <div class="page-header">
-    <h1>St Kevin's College Fathers Association — Group Leaders</h1>
+    <h1>St Kevin's College Fathers Association — Camp Leaders &amp; Group Captains</h1>
     <div class="sub">Year 7–8 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 24th/25th October 2026</div>
   </div>
   <div class="divider"></div>
   <div class="page-body">
 
-    <!-- Group Leaders List -->
-    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:16px;letter-spacing:0.4px;">Group Leaders</h2>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;">
+    <!-- Camp Leaders -->
+    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:16px;letter-spacing:0.4px;">Camp Leaders</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+
+      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
+        <div style="font-size:15px;font-weight:600;color:var(--white);">Andrew Hely</div>
+      </div>
+
+      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
+        <div style="font-size:15px;font-weight:600;color:var(--white);">Peter Aile</div>
+      </div>
+
+      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
+        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
+        <div style="font-size:15px;font-weight:600;color:var(--white);">Tom Nagy</div>
+      </div>
+
+    </div>
+
+    <!-- Group Captains -->
+    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:16px;letter-spacing:0.4px;">Group Captains</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;">
 
       <div style="background:var(--light);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
         <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--navy);letter-spacing:0.5px;margin-bottom:4px;">Group 1</div>
@@ -984,30 +1145,9 @@
 
     </div>
 
-    <!-- Camp Leaders -->
-    <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:16px;letter-spacing:0.4px;">Camp Leaders</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;">
-
-      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
-        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
-        <div style="font-size:15px;font-weight:600;color:var(--white);">Andrew Hely</div>
-      </div>
-
-      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
-        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
-        <div style="font-size:15px;font-weight:600;color:var(--white);">Peter Aile</div>
-      </div>
-
-      <div style="background:var(--navy);border-left:4px solid var(--gold);padding:14px;border-radius:4px;">
-        <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px;">Camp Leader</div>
-        <div style="font-size:15px;font-weight:600;color:var(--white);">Tom Nagy</div>
-      </div>
-
-    </div>
-
-    <!-- Group Leader Responsibilities -->
+    <!-- Camp Leaders & Group Captains Responsibilities -->
     <div style="border-top:3px solid var(--gold);padding-top:20px;">
-      <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">Group Leader Responsibilities</h2>
+      <h2 style="font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:0.4px;">Camp Leaders &amp; Group Captains Responsibilities</h2>
       <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
         <li style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--light);border-radius:4px;">
           <span style="color:var(--gold);font-weight:700;font-size:16px;flex-shrink:0;">&#10003;</span>
@@ -1085,12 +1225,26 @@
       </div>
       <div style="background:#3a5c7a;color:white;padding:14px;border-radius:4px;">
         <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:8px;">JAROSITE</div>
-        <div style="font-size:12px;opacity:0.85;">Rooms 1 – 8</div>
-        <div style="font-size:11px;margin-top:6px;opacity:0.7;">Next to Bells — see site map</div>
+        <div style="font-size:12px;opacity:0.85;">Rooms 1 – 12</div>
+        <div style="font-size:11px;margin-top:6px;opacity:0.7;">Shown on next page</div>
       </div>
     </div>
 
     <img src="acclayout.png" alt="Accommodation Layout — Addis and Bells" style="width:100%;border:1px solid #ccc;border-radius:4px;">
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     04c — ACCOMMODATION MAP — JAROSITE
+════════════════════════════════════════ -->
+<div class="page" id="accommodation-jarosite">
+  <div class="page-header">
+    <h1>St Kevin's College Fathers Association — Accommodation Layout — Jarosite</h1>
+    <div class="sub">Year 7–8 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; 24th/25th October 2026</div>
+  </div>
+  <div class="divider"></div>
+  <div class="page-body">
+    <img src="jarosite.png" alt="Accommodation Layout — Jarosite" style="width:100%;border:1px solid #ccc;border-radius:4px;">
   </div>
 </div>
 
@@ -1131,7 +1285,7 @@
         <div class="menu-item">
           <div class="time">7:30 pm</div>
           <h4>Evening</h4>
-          <p>Dad's Cheeseboard Event (dads) &amp; Film for Boys</p>
+          <p>Dads' Cheeseboard Event (dads) &amp; Film for Boys</p>
         </div>
       </div>
     </div>
@@ -1161,11 +1315,11 @@
 </div>
 
 <!-- ═══════════════════════════════════════
-     06 — DAD'S CHEESEBOARD EVENT
+     06 — DADS' CHEESEBOARD EVENT
 ════════════════════════════════════════ -->
 <div class="page" id="cheeseboard">
   <div class="page-header">
-    <h1>St Kevin's College Fathers Association — Dad's Cheeseboard Event</h1>
+    <h1>St Kevin's College Fathers Association — Dads' Cheeseboard Event</h1>
     <div class="sub">Year 7–8 Father / Male Mentor &amp; Son Camp &nbsp;|&nbsp; Saturday 24th October 2026 &nbsp;|&nbsp; 7:30 pm</div>
   </div>
   <div class="divider"></div>

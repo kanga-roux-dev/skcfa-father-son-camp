@@ -7,7 +7,7 @@ import fs from 'fs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const htmlPath = path.join(__dirname, 'index.html');
 const fileUrl = `file:///${htmlPath.replace(/\\/g, '/')}`;
-const pdfPath = path.join(__dirname, 'skcfa-father-son-camp-yr7-8-2026.pdf');
+const pdfPath = path.join(__dirname, 'skcfa-father-son-camp-yr7-8-2026-v2.pdf');
 
 const browser = await puppeteer.launch({
   headless: true,
